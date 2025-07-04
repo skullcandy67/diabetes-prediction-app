@@ -27,7 +27,7 @@ A machine learning web application built using Flask that predicts the likelihoo
 
 ## 🔗 Live Demo
 
-Check out the live deployed app: [Diabetes Predictor on Render](https://your-render-link.com)
+Check out the live deployed app: [Diabetes Predictor on Render](https://diabetes-prediction-app-1-8gwa.onrender.com)
 
 ---
 
