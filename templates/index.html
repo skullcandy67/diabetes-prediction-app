@@ -1,0 +1,145 @@
+<!doctype html>
+<html lang="en">
+  <head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <title>Diabetes Prediction - Healthcare</title>
+
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.6/dist/css/bootstrap.min.css">
+
+    <style>
+      body {
+        background-color: #f0f8ff;
+        font-family: 'Segoe UI', sans-serif;
+      }
+
+      h1 {
+        text-align: center;
+        margin-top: 30px;
+        margin-bottom: 30px;
+        color: #0a6c74;
+      }
+
+      form {
+        max-width: 600px;
+        margin: auto;
+        padding: 30px;
+        background-color: #ffffff;
+        border-radius: 15px;
+        box-shadow: 0 0 20px rgba(0, 0, 0, 0.1);
+      }
+
+      .form-label {
+        color: #064a51;
+        font-weight: 500;
+      }
+
+      .btn-primary {
+        background-color: #28a7a1;
+        border-color: #28a7a1;
+      }
+
+      .btn-primary:hover {
+        background-color: #21807a;
+        border-color: #21807a;
+      }
+
+      .alert {
+        max-width: 600px;
+        margin: 15px auto;
+      }
+
+      .result-box {
+        max-width: 600px;
+        margin: 30px auto;
+        padding: 20px;
+        border-radius: 15px;
+        background-color: #e0f7fa;
+        border: 2px solid #28a7a1;
+        box-shadow: 0 0 12px rgba(40, 167, 161, 0.3);
+        font-size: 1.15rem;
+        text-align: center;
+        color: #065b5b;
+        font-weight: 600;
+      }
+
+      .warning-text {
+        color: #cc0000;
+        text-align: center;
+        margin-top: 20px;
+        font-weight: bold;
+      }
+    </style>
+  </head>
+  <body>
+
+    <h1>Diabetes Prediction</h1>
+
+    {% with messages = get_flashed_messages(with_categories=true) %}
+      {% if messages %}
+        <div class="alert alert-danger text-center" role="alert">
+          {% for category, message in messages %}
+            {{ message }}
+          {% endfor %}
+        </div>
+      {% endif %}
+    {% endwith %}
+
+    <div class="form-container">
+      <form method="POST" action="/predict">
+        <div class="mb-3">
+          <label for="pregnancies" class="form-label">Pregnancies</label>
+          <input type="text" class="form-control" name="Pregnancies" id="pregnancies"
+                 placeholder="Enter number of times pregnant"
+                 value="{{ form_data['Pregnancies'] if form_data else '' }}">
+        </div>
+
+        <div class="mb-3">
+          <label for="glucose" class="form-label">Glucose</label>
+          <input type="text" class="form-control" name="Glucose" id="glucose"
+                 placeholder="Plasma glucose level"
+                 value="{{ form_data['Glucose'] if form_data else '' }}">
+        </div>
+
+        <div class="mb-3">
+          <label for="insulin" class="form-label">Insulin</label>
+          <input type="text" class="form-control" name="Insulin" id="insulin"
+                 placeholder="2-Hour serum insulin"
+                 value="{{ form_data['Insulin'] if form_data else '' }}">
+        </div>
+
+        <div class="mb-3">
+          <label for="bmi" class="form-label">BMI</label>
+          <input type="text" class="form-control" name="BMI" id="bmi"
+                 placeholder="Body Mass Index"
+                 value="{{ form_data['BMI'] if form_data else '' }}">
+        </div>
+
+        <div class="mb-3">
+          <label for="age" class="form-label">Age</label>
+          <input type="text" class="form-control" name="Age" id="age"
+                 placeholder="Your age in years"
+                 value="{{ form_data['Age'] if form_data else '' }}">
+        </div>
+
+        <button type="submit" class="btn btn-primary w-100">Submit</button>
+      </form>
+    </div>
+
+    {% if prediction_text %}
+      <div class="result-box">
+         <strong>Risk Estimate:</strong> {{ prediction_text.percentage }}% chance<br>
+         <strong>Result:</strong> {{ prediction_text.status }}
+      </div>
+    {% else %}
+      <div class="result-box">
+         <strong>Risk Estimate:</strong> Waiting for result...<br>
+         <strong>Result:</strong> -
+      </div>
+    {% endif %}
+
+    <p class="warning-text">⚠ Please consult a doctor for a proper diagnosis.</p>
+
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.6/dist/js/bootstrap.bundle.min.js"></script>
+  </body>
+</html>
