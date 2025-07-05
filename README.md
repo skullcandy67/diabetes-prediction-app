@@ -1,40 +1,44 @@
 #  Diabetes Prediction Web App
 
-A machine learning web application built using Flask that predicts the likelihood of diabetes based on user input. It leverages SMOTE for handling class imbalance and uses multiple ensemble models for high accuracy.
+A machine learning-powered web application built with Flask to predict the likelihood of diabetes based on user input. It uses SMOTE to handle class imbalance and leverages multiple ensemble models for robust and accurate predictions.
 
 ---
 
 ##  Features
 
-- User-friendly web interface
-- Data preprocessing: KNN imputation + Ordinal Encoding
-- Handles class imbalance using SMOTE
-- Trained with:
-  - Voting Classifier (hard & soft)
-  - Stacking Classifier (best performer)
-  - CalibratedClassifierCV for calibrated outputs
-- Dockerized for deployment
+- User-friendly web interface for input & prediction
+- Data preprocessing pipeline:
+  - KNN Imputation
+  - Ordinal Encoding
+- Class imbalance handled with **SMOTE**
+- Ensemble models:
+  -  Voting Classifier (Hard & Soft)
+  -  Stacking Classifier (**Best Performer**)
+  -  CalibratedClassifierCV for probability calibration
+- Dockerized for seamless deployment
 
 ---
 
 ##  Tech Stack
 
-- Python, Flask, HTML/CSS
-- scikit-learn, imbalanced-learn, LightGBM, CatBoost
-- Docker
+- **Backend**: Python, Flask
+- **Frontend**: HTML, CSS (Bootstrap)
+- **ML Libraries**: scikit-learn, imbalanced-learn, LightGBM, CatBoost
+- **Deployment**: Docker, Render
 
 ---
 
-## 🔗 Live Demo
+##  Live Demo
 
-Check out the live deployed app: [Diabetes Predictor on Render](https://diabetes-prediction-app-1-8gwa.onrender.com)
+👉 [Diabetes Predictor on Render](https://diabetes-prediction-app-1-8gwa.onrender.com)
 
 ---
 
-## 🐳 Run Locally with Docker
+##  Run Locally with Docker
 
 ```bash
 git clone https://github.com/yourusername/diabetes-predictor.git
 cd diabetes-predictor
 docker build -t diabetes_pred .
 docker run -p 8888:5000 diabetes_pred
+
