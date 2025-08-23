@@ -37,7 +37,7 @@ A machine learning-powered web application built with Flask to predict the likel
 ##  Run Locally with Docker
 
 ```bash
-git clone https://github.com/yourusername/diabetes-predictor.git
+git clone https://github.com/hubashaikh2005/diabetes-prediction-app.git
 cd diabetes-predictor
 docker build -t diabetes_pred .
 docker run -p 8888:5000 diabetes_pred
